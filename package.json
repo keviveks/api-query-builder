@@ -1,0 +1,31 @@
+{
+  "name": "api-query-builder",
+  "version": "1.0.0",
+  "description": "Restful API query builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keviveks/api-query-builder.git"
+  },
+  "keywords": [
+    "rest-api",
+    "query",
+    "builder",
+    "api",
+    "api-query-builder"
+  ],
+  "author": "keviveks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keviveks/api-query-builder/issues"
+  },
+  "homepage": "https://github.com/keviveks/api-query-builder#readme",
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
