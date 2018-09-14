@@ -18,7 +18,7 @@
     "api-query-builder"
   ],
   "author": "keviveks",
-  "license": "ISC",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/keviveks/api-query-builder/issues"
   },
