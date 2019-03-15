@@ -9,10 +9,9 @@ This package will helps you to build a stright forward query object for mongoose
 | filter | Model where query filter |
 | with | With populate the reference object |
 | deep | Deep populate the reference of inheritance object  |
-| offset | Data offset value |
+| skip | Data skip value |
 | limit | Data limit |
-| sort | Sort order field name |
-| order | Sort by asc, desc value |
+| sort | Sort order field name by asc desc value |
 
 > Note: All these fields are optional in the url, by default our package will build an sample query object.
 
@@ -50,31 +49,31 @@ app.get('/', function(req, res) {
 ##### 1. API url with query string
 
 ```js
-GET: api/users?select=firstName,email,_role&filter[active]=true&filter[createdAt][$gt]=2018-09-09&with[_role]=name,_department_&deep[_role._department]=name&offset=0&limit=10&sort=createdAt&order=desc
+GET: api/users?select=firstName,email,_role&filter[active]=true&filter[createdAt][$gt]=2018-09-09&with[_role]=name,_department_&deep[_role._department]=name&skip=0&limit=10&sort[createdAt]=desc
 ```
 
 ##### 2. Mongoose model with api response
 
 ```js
   api.get('/user', async function(req, res) {
-    const { query } = req;
+    const { filter, select, skip, limit, sort, populates, deepPopulates } = req.query;
     // query mongoose user model
-    const users = await User.find(query.filter)
-      .select(query.select)
-      .skip(query.offset)
-      .limit(query.limit)
-      .sort(query.sortBy)
+    const users = await User.find(filter)
+      .select(select)
+      .skip(skip)
+      .limit(limit)
+      .sort(sort)
       .exec();
 
     // populate ref schema fields
-    if (query.populates.length && users.length) {
-      await Promise.all(Object.values(query.populates)
+    if (populates.length && users.length) {
+      await Promise.all(Object.values(populates)
         .map(({ path, select }) => User.populate(users, { path, select })));
     }
 
     // check for deep populate
-    if (query.deepPopulates.length) {
-      await Promise.all(Object.values(query.deepPopulates)
+    if (deepPopulates.length) {
+      await Promise.all(Object.values(deepPopulates)
         .map(({ path, select, model }) => User.populate(users, { path, select, model })));
     }
 
