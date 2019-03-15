@@ -24,10 +24,6 @@ exports.selectBuilder = (query) => {
 exports.filterBuilder = (query) => {
   // check or define object for filter
   query.filter = (query.filter) ? query.filter : {};
-  // add default values to the query filter - deleted
-  if (typeof query.filter.deleted === 'undefined') {
-    query.filter.deleted = false;
-  }
 
   return query;
 };
@@ -67,35 +63,29 @@ exports.deepBuilder = (query) => {
 };
 
 /**
- * Set offset & limit values for list request
+ * Set skip & limit values for list request
  *
  * @param {object} query request query object to set limit
- * @return {object} return the param query with offset & limit set
+ * @return {object} return the param query with skip & limit set
  */
 exports.limitBuilder = (query) => {
   // check & set the page
-  query.offset = (query.offset) ? parseInt(query.offset, 10) : 0;
+  query.skip = (query.skip) ? parseInt(query.skip, 10) : 0;
   // check & set the limit query
-  query.limit = (query.limit) ? parseInt(query.limit, 10) : 10;
+  query.limit = (query.limit) ? parseInt(query.limit, 10) : 0;
 
   return query;
 };
 
 /**
- * Set Sort order for list request
+ * Set Sort "order" for list request
  *
  * @param {object} query request query object to set sort order
  * @return {Object} return the param query with sort values
  */
 exports.sortBuilder = (query) => {
-  // check order by is set
-  query.order = (query.order) ? query.order : 'createdAt';
   // check sort set in query
-  query.sort = (query.sort) ? query.sort : 'desc';
-  // sortBy
-  query.sortBy = {};
-  // set sort by values
-  query.sortBy[query.order] = query.sort;
+  query.sort = (query.sort) ? query.sort : {};
 
   return query;
 };
