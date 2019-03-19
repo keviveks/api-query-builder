@@ -17,6 +17,9 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# vs code debug
+.vscode
+
 # nyc test coverage
 .nyc_output
 
@@ -59,3 +62,6 @@ typings/
 
 # next.js build output
 .next
+
+# test folder
+test/
