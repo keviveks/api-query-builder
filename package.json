@@ -1,6 +1,6 @@
 {
   "name": "api-query-builder",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Restful API query builder",
   "main": "index.js",
   "scripts": {
@@ -15,10 +15,11 @@
     "query",
     "builder",
     "api",
+    "mongoose query",
     "api-query-builder"
   ],
   "author": "keviveks",
-  "license": "GPL",
+  "license": "AGPL-3.0-only",
   "bugs": {
     "url": "https://github.com/keviveks/api-query-builder/issues"
   },

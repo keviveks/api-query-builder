@@ -6,7 +6,7 @@ This package will helps you to build a stright forward query object for mongoose
 | Query String  | Description |
 |-------------|--------------|
 | select  | Select fields from mongoose model  |
-| filter | Model where query filter |
+| filter | Model find query filter |
 | with | With populate the reference object |
 | deep | Deep populate the reference of inheritance object  |
 | skip | Data skip value |
@@ -33,26 +33,44 @@ npm install --save api-query-builder
 
 ```js
 const express = require('express');
-const builder = require('api-query-builder');
+const apiQueryBuilder = require('api-query-builder');
 
 const app = express();
 
-app.use(builder.build());
+app.use(apiQueryBuilder.build());
 
 app.get('/', function(req, res) {
   res.json(res.query);
 });
 ```
 
+You can pass an default options also in the build middleware which will apply for all the request
+## Usage
+
+```js
+
+app.use(apiQueryBuilder.build({
+  select: 'createdBy,createdAt,isActive',
+  filter: {
+    active: true,
+    deleted: false,
+  },
+  sort: {
+    createdAt: "asc",
+  },
+}));
+
+```
+
 ## Sample
 
-##### 1. API url with query string
+#### 1. API url with query string
 
 ```js
 GET: api/users?select=firstName,email,_role&filter[active]=true&filter[createdAt][$gt]=2018-09-09&with[_role]=name,_department_&deep[_role._department]=name&skip=0&limit=10&sort[createdAt]=desc
 ```
 
-##### 2. Mongoose model with api response
+#### 2. Mongoose model with api response
 
 ```js
   api.get('/user', async function(req, res) {
@@ -81,7 +99,7 @@ GET: api/users?select=firstName,email,_role&filter[active]=true&filter[createdAt
   });
 ```
 
-##### 4. Sample JSON response
+#### 4. Sample JSON response
 
 ```json
 [
@@ -89,13 +107,21 @@ GET: api/users?select=firstName,email,_role&filter[active]=true&filter[createdAt
     "firstName": "Shelton",
     "email": "shelton@bbt.com",
     "_role": {
-      "name": "Scientist",
+      "name": "Scientist", // the populated object for user
       "_department": {
-        "name": "Physics"
+        "name": "Physics" // the deep populated object from role of user
       }
     }
   }
 ]
+```
+
+#### 5. Call API with with no default values
+
+  For a specific API if dont want to set defualt values pass "dontUseDefault" param with "true" value in query string. This will never append the default values for that API.
+
+```js
+GET: api/users?select=firstName,email,_role&filter[active]=true&dontUseDefault=true
 ```
 
 ## Test
