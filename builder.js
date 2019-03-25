@@ -14,9 +14,9 @@ const builder = (() => {
     // check & set select fields with no secret fields
     if (query.select && query.select !== '*') {
       // change the key separator from comma(,) to space( )
-      query.select = (`${query.select} ${this.defaults.select || ''}`).split(',').join(' ').trim();
+      query.select = (`${query.select} ${this.defaults.select || ''}`).replace(/,/g, ' ').trim();
     } else {
-      query.select = this.defaults.select || '';
+      query.select = (this.defaults.select || '').replace(/,/g, ' ').trim();
     }
     return this;
   };
