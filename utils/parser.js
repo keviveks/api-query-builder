@@ -57,6 +57,13 @@ const parser = (() => {
   };
 
   /**
+   * Parse string values & replce the empty spaces
+   * @param {String} val String value
+   * @return {String}
+   */
+  this.parseString = val => val.replace(/ /g, '').toString();
+
+  /**
    * Parse value
    * @param {Any} val
    * @return {Any}
@@ -72,6 +79,8 @@ const parser = (() => {
       val = this.parseObject(val);
     } else if (this.isNumber(val)) {
       val = this.parseNumber(val);
+    } else {
+      val = this.parseString(val);
     }
 
     return val;

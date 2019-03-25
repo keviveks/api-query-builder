@@ -4,10 +4,13 @@ const utils = require('./utils');
 function build(options = {}) {
   return (req, res, next) => {
     try {
-      // parse the query object for numbers & boolean values
+      // parse & validate the query object for numbers & boolean values
       req.query = utils.parseQuery(req.query);
-
       req.query = utils.validator(req.query);
+
+      // parse & validate the default options
+      options = utils.parseQuery(options);
+      options = utils.validator(options);
 
       // check use default flag in the query to use default options for the builder
       builder.defaults = req.query.dontUseDefault ? {} : options;
