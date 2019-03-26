@@ -1,6 +1,6 @@
 {
   "name": "api-query-builder",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantically-released",
   "description": "Restful API query builder",
   "main": "index.js",
   "scripts": {
