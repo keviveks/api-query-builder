@@ -45,7 +45,6 @@ app.get('/', function(req, res) {
 ```
 
 You can pass an default options also in the build middleware which will apply for all the request
-## Usage
 
 ```js
 
