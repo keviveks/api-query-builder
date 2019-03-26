@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "mocha index.test.js -w",
+    "test": "mocha index.test.js",
+    "test:watch": "mocha index.test.js -w",
     "semantic-release": "semantic-release"
   },
   "repository": {
@@ -38,7 +39,9 @@
     "semantic-release": "^15.13.3",
     "sinon": "^7.3.0"
   },
-  "czConfig": {
-    "path": "node_modules/cz-conventional-changelog"
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }
