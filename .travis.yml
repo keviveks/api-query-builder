@@ -4,6 +4,13 @@ node_js:
   - 8
   - 6
 
+install:
+  - npm install
+
+cache:
+  directories:
+    - "node_modules"
+
 jobs:
   include:
     # Define the release stage that runs semantic-release
