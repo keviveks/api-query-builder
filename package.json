@@ -3,8 +3,13 @@
   "version": "0.0.0-semantically-released",
   "description": "Restful API query builder",
   "main": "index.js",
+  "engines": {
+    "node": ">8.9.0"
+  },
   "scripts": {
     "commit": "git-cz",
+    "lint": "eslint **/*.js --ignore-path .gitignore",
+    "lint:fix": "eslint **/*.js --fix",
     "test": "mocha index.test.js",
     "test:watch": "mocha index.test.js -w",
     "semantic-release": "semantic-release"
