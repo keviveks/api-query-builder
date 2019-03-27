@@ -10,7 +10,9 @@
     "commit": "git-cz",
     "lint": "eslint **/*.js --ignore-path .gitignore",
     "lint:fix": "eslint **/*.js --fix",
-    "test": "mocha index.test.js",
+    "test": "nyc --reporter=html --reporter=text mocha index.test.js",
+    "test:coverage": "nyc check-coverage --lines 90 --funcitons 100 --branches 85 --statements 90",
+    "test:report": "nyc report --reporter=text-lcov > ./coverage/coverage.lcov codecov",
     "test:watch": "mocha index.test.js -w",
     "semantic-release": "semantic-release"
   },
@@ -34,6 +36,7 @@
   "homepage": "https://github.com/keviveks/api-query-builder#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "codecov": "^3.2.0",
     "commitizen": "^3.0.7",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.15.1",
@@ -42,6 +45,7 @@
     "ghooks": "^2.0.4",
     "mocha": "^6.0.2",
     "node-mocks-http": "^1.7.3",
+    "nyc": "^13.3.0",
     "semantic-release": "^15.13.3",
     "sinon": "^7.3.0"
   },
@@ -50,7 +54,12 @@
       "path": "node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "pre-commit": "npm run lint && npm run test"
+      "pre-commit": "npm run lint && npm run test && npm run test:coverage"
+    },
+    "nyc": {
+      "exclude": [
+        "*.test.js"
+      ]
     }
   }
 }

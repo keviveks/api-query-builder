@@ -19,8 +19,10 @@ jobs:
       node_js: 10.0.0
       script:
         - npm run test
+        - npm run test:coverage
 
     - stage: release
       node_js: 10.0.0
       script:
+        - npm run test:report
         - npm run semantic-release
