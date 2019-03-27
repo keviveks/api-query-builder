@@ -39,6 +39,7 @@
     "eslint": "^5.15.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "ghooks": "^2.0.4",
     "mocha": "^6.0.2",
     "node-mocks-http": "^1.7.3",
     "semantic-release": "^15.13.3",
@@ -47,6 +48,9 @@
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "npm run lint && npm run test"
     }
   }
 }

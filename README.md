@@ -149,4 +149,5 @@ This project is licensed under the GPL License - see our LICENSE file for detail
 
 ## Todo
 
-- [ ] Unit Test
+- [x] Unit Test
+- [x] CI
