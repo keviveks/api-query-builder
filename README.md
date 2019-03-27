@@ -1,6 +1,12 @@
 # api-query-builder
 RestAPI Query Builder to build mongoose model query from api query string.
 
+[![travis build](https://img.shields.io/travis/keviveks/api-query-builder.svg)](https://travis-ci.org/keviveks/api-query-builder)
+[![codecov coverage](https://img.shields.io/codecov/c/gh/keviveks/api-query-builder.svg?token=1daad088acfd4d15b040eeaa00c3c836)](https://codecov.io/gh/keviveks/api-query-builder)
+[![version](https://img.shields.io/npm/v/api-query-builder.svg)](https://www.npmjs.com/package/api-query-builder)
+[![downloads](https://img.shields.io/npm/dw/api-query-builder.svg)](https://www.npmjs.com/package/api-query-builder)
+[![license](https://img.shields.io/npm/l/api-query-builder.svg)](https://github.com/keviveks/api-query-builder/blob/master/LICENSE)
+
 This package will helps you to build a stright forward query object for mongoose query with all possible properties from API url query string i.e.
 
 | Query String  | Description |
