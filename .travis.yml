@@ -1,8 +1,6 @@
 language: node_js
 
 stages:
-  - lint
-  - test
   - release
 
 notifications:
@@ -10,19 +8,13 @@ notifications:
 
 jobs:
   include:
-    - stage: lint
+    - stage: release
       node_js: 10.0.0
-      script:
+      before_script:
         - npm run lint
-
-    - stage: test
-      node_js: 10.0.0
       script:
         - npm run test
         - npm run test:coverage
-
-    - stage: release
-      node_js: 10.0.0
-      script:
+      after_success:
         - npm run test:report
         - npm run semantic-release
