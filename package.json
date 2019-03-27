@@ -12,7 +12,7 @@
     "lint:fix": "eslint **/*.js --fix",
     "test": "nyc --reporter=html --reporter=text mocha index.test.js",
     "test:coverage": "nyc check-coverage --lines 90 --funcitons 100 --branches 85 --statements 90",
-    "test:report": "nyc report --reporter=text-lcov > coverage.lcov ./node_modules/.bin/codecov",
+    "test:report": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "test:watch": "mocha index.test.js -w",
     "semantic-release": "semantic-release"
   },
